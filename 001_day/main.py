@@ -1,1 +1,6 @@
-print("Slow slow python...")
+print("Hello to this programm, we will create you a band name")
+print("What is the name of the city you grew up in?")
+city = input()
+print("What is the name of your pet?")
+pet = input()
+print("Your band name could be: " + city + " " + pet)
