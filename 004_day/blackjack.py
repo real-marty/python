@@ -14,7 +14,7 @@ def card_sum(cards):
     for card in cards:
         _sum += card
     for card in cards:
-        if _sum > 21 and 11 in cards:
+        if _sum > 21 and card == 11:
             _sum -= 10
     return _sum
 
@@ -36,6 +36,8 @@ while True:
         else:
             print("Invalid input")
     while card_sum(dealer_cards) < 17:
+        if card_sum(player_cards) > 21:
+            break
         dealer_cards.append(generate_card())
     print(f"Dealer's cards: {dealer_cards} --- sum: {card_sum(dealer_cards)}")
     if card_sum(player_cards) > 21:
