@@ -1,26 +1,19 @@
 from collections import deque
 
-
-
 #bfs algorithm 
-
-
 def bfs(graph, start):
     visited = set()
     queue = deque([start])
     
     while queue:
-        vertex = queue.popleft() # Remove and return an element from the left side of the deque
+        vertex = queue.popleft() 
         if vertex not in visited:
             visited.add(vertex)
             print(vertex, end=" ")
-            
-            # Add all unvisited neighbors to the queue
             queue.extend([node for node in graph[vertex] if node not in visited])
 
 
 #dfs algorithm
-
 def dfs(graph, start, visited=None):
     if visited is None:
         visited = set()
@@ -31,24 +24,6 @@ def dfs(graph, start, visited=None):
     for next in graph[start]:
         if next not in visited:
             dfs(graph, next, visited)
-
-# Example usage
-
-
-
-# Example usage
-graph = {
-    'A' : ['B','C'],
-    'B' : ['D', 'E'],
-    'C' : ['F'],
-    'D' : [],
-    'E' : ['F'],
-    'F' : []
-}
-
-
-# bfs(graph, 'A') # Starting BFS traversal from node 'A'
-# dfs(graph, 'A') # Starting DFS traversal from node 'A'
 
 
 
@@ -106,13 +81,6 @@ def move_disks_dfs(num_disks):
     return []
 
 
-#move_disks_bfs(3);
-#move_disks_dfs(3);
-
-
-
-from collections import deque
-
 def move_disks_bfs_verbose(num_disks):
     start = (tuple(range(1, num_disks + 1)), tuple(), tuple())
     target = (tuple(), tuple(), tuple(range(1, num_disks + 1)))
@@ -138,7 +106,6 @@ def move_disks_bfs_verbose(num_disks):
                                 queue.append((new_state_tuple, path + [new_state_tuple]))
     return []
 
-# Získat kroky pro 3 disky pomocí BFS a vytisknout je s komentáři
 steps_bfs = move_disks_bfs_verbose(3)
 
 def move_disks_dfs_verbose(num_disks):
@@ -173,7 +140,6 @@ def move_disks_dfs_verbose(num_disks):
 move_disks_dfs_verbose(3)
 
 
-# Vypsat každý krok s komentářem
 for index, step in enumerate(steps_bfs):
     print(f"Krok {index + 1}: {step} - Přesun disku z {('prvního', 'druhého', 'třetího')[index % 3]} sloupu na {('první', 'druhý', 'třetí')[index % 3]} sloup.")
 
